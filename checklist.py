@@ -1,20 +1,38 @@
+# Create our Checklist
+
 checklist = list()
 
-# CREATE
+# Define Functions
+
 def create(item):
+    # CREATE
     checklist.append(item)
 
-# READ
+
 def read(index):
+    # READ
     return checklist[index]
 
-# UPDATE
+
 def update(index, item):
+    # UPDATE
     checklist[index] = item
 
-# DESTROY
+
 def destroy(index):
+    # DESTROY
      checklist.pop(index)
+
+
+def list_all_items():
+    # Code to list all items in list
+    index = 0
+    for list_item in checklist:
+        print("{} {}".format(index, list_item))
+        index += 1
+
+def mark_completed(index):
+    # Add code here that marks an item as completed
 
 def test():
     # Add your testing code here
@@ -32,5 +50,5 @@ def test():
 
     list_all_items()
 
-#Call functions 
+#Call functions
 test()
