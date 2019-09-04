@@ -38,49 +38,54 @@ def user_input(prompt):
     return user_input
 
 def select(function_code):
-    # Create item
-    if function_code == "C":
-        input_item = user_input("Input item: ")
-        create(input_item)
-        return True
+    try:
+        # Create item
+        if function_code == "C":
+            input_item = user_input("Input item: ")
+            create(input_item)
+            return True
 
-    # Read item
-    elif function_code == "R":
-        item_index = user_input("Index Number: ")
+        # Read item
+        elif function_code == "R":
+            item_index = user_input("Index Number: ")
 
         # Remember that item_index must actually exist or our program will crash.
-        print(read(int(item_index)))
-        return True
+            print(read(int(item_index)))
+            return True
 
-    # Print all items
-    elif function_code == "P":
-        list_all_items()
-        return True
+        # Print all items
+        elif function_code == "P":
+            list_all_items()
+            return True
 
-    elif function_code == "Q":
-        # This is where we want to stop our loop
-        return False
+        elif function_code == "Q":
+            # This is where we want to stop our loop
+            return False
 
-    elif function_code == "D":
-        item_index = user_input("Index Number: ")
-        destroy(int(item_index))
-        return True
+        elif function_code == "D":
+            item_index = user_input("Index Number: ")
+            destroy(int(item_index))
+            return True
 
-    elif function_code == "M":
-        item_index = user_input("Index Number: ")
-        mark_completed(int(item_index))
-        return True
+        elif function_code == "M":
+            item_index = user_input("Index Number: ")
+            mark_completed(int(item_index))
+            return True
 
-    elif function_code == "U":
-        item_index = user_input("Index Number: ")
-        item_input = user_input("Item to update: ")
-        update(int(item_index), str(item_input))
-        return True
+        elif function_code == "U":
+            item_index = user_input("Index Number: ")
+            item_input = user_input("Item to update: ")
+            update(int(item_index), str(item_input))
+            return True
 
 
-    # Catch all
-    else:
-        print("Unknown Option")
+        # Catch all
+        else:
+            print("That was not a vaild entry, please try again!:)")
+            return True
+
+    except IndexError:
+        print("That was not a valid index, please try again: ")
         return True
 
 def test():
@@ -105,5 +110,5 @@ def test():
 
 running = True
 while running:
-    selection = user_input("Press C to add to list, R to Read from list, P to display list, U to update list, M to mark list, D to destory list and Q to quit ")
+    selection = user_input("\u001b[36m Press C to add to list, R to Read from list, P to display list, U to update list, M to mark list, D to destory list and Q to quit: \u001b[0m")
     running = select(selection)
